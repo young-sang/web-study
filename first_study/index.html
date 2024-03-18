@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api요청</title>
+</head>
+
+<body>
+    <h1 id="sound"></h1>
+    <input id="name" type="text">
+    <button onclick="getsound()">API요청</button>
+    <script>
+        function getsound() {
+            const name = document.getElementById('name').value
+            // async function logJSONData() {
+            //     const response = await fetch(`http://localhost:3000/${name}`);
+            //     const jsonData = await response.json();
+            //     console.log(jsonData);
+            //     document.getElementById('sound').innerHTML = jsonData;
+            // }
+            fetch(`http://localhost:3000/sound/${name}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.sound)
+                document.getElementById('sound').innerHTML = data.sound
+            });
+        }
+    </script>
+</body>
+
+</html>
